@@ -11,6 +11,10 @@
 		B746C7932C8A37E5001FAC33 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7922C8A37E5001FAC33 /* ContentView.swift */; };
 		B746C7952C8A37E7001FAC33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B746C7942C8A37E7001FAC33 /* Assets.xcassets */; };
 		B746C7982C8A37E7001FAC33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B746C7972C8A37E7001FAC33 /* Preview Assets.xcassets */; };
+		B746C7A02C8B0A94001FAC33 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C79F2C8B0A94001FAC33 /* NetworkAPI.swift */; };
+		B746C7A42C8B1990001FAC33 /* RMSConfigBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7A32C8B1990001FAC33 /* RMSConfigBox.swift */; };
+		B746C7A72C8B36D6001FAC33 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7A62C8B36D6001FAC33 /* NetworkManager.swift */; };
+		B746C7AA2C8B4E3C001FAC33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7A92C8B4E3C001FAC33 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		B746C7922C8A37E5001FAC33 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B746C7942C8A37E7001FAC33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B746C7972C8A37E7001FAC33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B746C79F2C8B0A94001FAC33 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
+		B746C7A32C8B1990001FAC33 /* RMSConfigBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSConfigBox.swift; sourceTree = "<group>"; };
+		B746C7A62C8B36D6001FAC33 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B746C7A92C8B4E3C001FAC33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,10 @@
 		B746C78F2C8A37E5001FAC33 /* StarterProjectSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				B746C7902C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift */,
-				B746C7922C8A37E5001FAC33 /* ContentView.swift */,
+				B746C7A92C8B4E3C001FAC33 /* Constants.swift */,
+				B746C79E2C8B0A75001FAC33 /* Model */,
+				B746C7A82C8B428A001FAC33 /* View */,
+				B746C7A52C8B36BA001FAC33 /* Viewmodel */,
 				B746C7942C8A37E7001FAC33 /* Assets.xcassets */,
 				B746C7962C8A37E7001FAC33 /* Preview Content */,
 			);
@@ -65,6 +75,32 @@
 				B746C7972C8A37E7001FAC33 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B746C79E2C8B0A75001FAC33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B746C79F2C8B0A94001FAC33 /* NetworkAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B746C7A52C8B36BA001FAC33 /* Viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				B746C7A62C8B36D6001FAC33 /* NetworkManager.swift */,
+			);
+			path = Viewmodel;
+			sourceTree = "<group>";
+		};
+		B746C7A82C8B428A001FAC33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B746C7902C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift */,
+				B746C7922C8A37E5001FAC33 /* ContentView.swift */,
+				B746C7A32C8B1990001FAC33 /* RMSConfigBox.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +175,10 @@
 			files = (
 				B746C7932C8A37E5001FAC33 /* ContentView.swift in Sources */,
 				B746C7912C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift in Sources */,
+				B746C7A72C8B36D6001FAC33 /* NetworkManager.swift in Sources */,
+				B746C7A42C8B1990001FAC33 /* RMSConfigBox.swift in Sources */,
+				B746C7A02C8B0A94001FAC33 /* NetworkAPI.swift in Sources */,
+				B746C7AA2C8B4E3C001FAC33 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
