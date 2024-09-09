@@ -14,19 +14,24 @@ struct RMSConfigBox: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("API key:")
+                Text("API key:").accessibilityLabel("API key")
                     .bold()
                 Spacer()
-                Text(user?.rmsConfig.apiKey ?? "your api key here!!!")
+                Text(user?.rmsConfig.apiKey ?? "your api key here!!!").accessibilityLabel(user?.rmsConfig.apiKey ?? "your api key here!!!")
             }
             .padding(.vertical, 5)
             
             HStack {
                 Text("root url:")
                     .bold()
-                Spacer() 
+                    .accessibilityLabel("root url")
+                    
+                Spacer()
                 Text(user?.rmsConfig.rootURL ?? "your root url here: HOLDER")
+                    .accessibilityLabel(user?.rmsConfig.rootURL ?? "your root url here: HOLDER")
+                    .accessibilityAddTraits(.isLink)
             }
+           
             .padding(.vertical, 5)
         }
         .padding()

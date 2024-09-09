@@ -16,6 +16,7 @@ struct ContentView: View {
                 VStack(spacing: 40) {
                     
                     Text(networkManager.user?.status.message ?? "HOLDER: Unfortunately this version of the app no longer works. You'll need to update it to continue.")
+                        .accessibilityLabel(networkManager.user?.status.message ?? "Unfortunately this version of the app no longer works. You'll need to update it to continue.")
                     Button(action: {
                         if let url = URL(string: networkManager.user?.status.appStoreURL ?? Constants.url) {
                             UIApplication.shared.open(url)
@@ -23,15 +24,17 @@ struct ContentView: View {
                     })
                     {
                         Text(networkManager.user?.status.linkTitle ?? "HOLDER: Update now")
-                    }
+                    }.accessibilityLabel(networkManager.user?.status.appStoreURL ?? Constants.url)
+                        .accessibilityAddTraits(.isButton )
                     
                     GroupBox {
                         RMSConfigBox(user: networkManager.user)
                     } label: {
                         Label("RMS Configuration", systemImage: "key.fill")
-                    }
+                    }.accessibilityLabel("RMS configuration")
                 }
                 .navigationTitle(networkManager.user?.status.title ?? "HOLDER: it's time to update BBC Sounds")
+                .accessibilityLabel(networkManager.user?.status.title ?? "HOLDER: it's time to update BBC Sounds")
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .task {
