@@ -1,14 +1,14 @@
 //
-//  ContentView.swift
+//  ContentViewKill.swift
 //  StarterProjectSwiftUI
 //
-//  Created by Malik Motahar - Sounds Mobile 1 on 05/09/2024.
+//  Created by Malik Motahar - Sounds Mobile 1 on 10/09/2024.
 //
 
 import SwiftUI
 
-struct ContentViewActive: View {
-    @StateObject var networkManager = NetworkManagerActive()
+struct ContentViewKill: View {
+    @StateObject var networkManager = NetworkManagerKill()
     
     var body: some View {
         NavigationStack {
@@ -37,7 +37,7 @@ struct ContentViewActive: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .task {
-                    await networkManager.fetchAPIDetails() 
+                    await networkManager.fetchAPIDetails()
                 }
             }
         }
@@ -45,5 +45,5 @@ struct ContentViewActive: View {
 }
 
 #Preview {
-    ContentViewActive()
+    ContentViewKill()
 }

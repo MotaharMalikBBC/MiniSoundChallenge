@@ -12,9 +12,9 @@
 
 import Foundation
 
-// ViewModel to handle API calls and expose data to the view
+
 @MainActor
-class NetworkManager: ObservableObject {
+class NetworkManagerActive: ObservableObject {
     @Published var user: ApiModel?
     @Published var isLoading = false
 
@@ -36,7 +36,7 @@ class NetworkManager: ObservableObject {
     }
 
     private func getAPIDetails() async throws -> ApiModel {
-        let endpoint = Constants.endpoint
+        let endpoint = Constants.endpointActive
         guard let url = URL(string: endpoint) else {
             throw APIError.invalidURL
         }

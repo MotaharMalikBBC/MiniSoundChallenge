@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-struct RMSConfigBox: View {
+struct RMSConfigBoxActive: View {
     public var user: ApiModel?
     var body: some View {
         VStack(alignment: .leading) {
