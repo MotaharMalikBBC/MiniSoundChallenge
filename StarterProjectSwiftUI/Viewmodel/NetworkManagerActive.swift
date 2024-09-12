@@ -2,27 +2,38 @@ import Foundation
 
 @MainActor
 class NetworkManagerActive: ObservableObject {
-    @Published var user: ApiModel?
+//    @Published var user: ApiModel?
     @Published var isLoading = false
 
-    func fetchAPIDetails(from endpoint: String) async {
+    func fetchAPIDetails<T: Decodable>(from endpoint: String) async -> Result <T, APIError> {
         isLoading = true
         defer { isLoading = false }
 
         do {
-            user = try await getAPIDetails(from: endpoint)  // Pass the endpoint dynamically
+            let data = try await getAPIDetails(from: endpoint)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let decodedData =  try decoder.decode(T.self, from: data)
+            return .success(decodedData)
+            
         } catch APIError.invalidData {
            print("Invalid data")
+            return .failure(.invalidData)
         } catch APIError.invalidResponse {
             print("Invalid response")
+            return .failure(.invalidResponse)
         } catch APIError.invalidURL {
             print("Invalid URL")
+            return .failure(.invalidURL)
         } catch {
             print("An error occurred: \(error)")
+            return .failure(.error)
+
         }
+        
     }
 
-    private func getAPIDetails(from endpoint: String) async throws -> ApiModel {
+    private func getAPIDetails(from endpoint: String) async throws -> Data {
         guard let url = URL(string: endpoint) else {
             throw APIError.invalidURL
         }
@@ -32,15 +43,15 @@ class NetworkManagerActive: ObservableObject {
             throw APIError.invalidResponse
         }
         
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return try decoder.decode(ApiModel.self, from: data)
+       return data
+    }
+    
+    enum APIError: Error {
+        case invalidURL
+        case invalidResponse
+        case invalidData
+        case error
     }
 }
 
-// Custom errors for the API
-enum APIError: Error {
-    case invalidURL
-    case invalidResponse
-    case invalidData
-}
+

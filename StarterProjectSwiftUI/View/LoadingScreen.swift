@@ -22,7 +22,7 @@ struct LoadingScreen: View {
                         self.selectedEndpoint = Constants.endpointActive
                         self.isNavigating = true  // Set isNavigating to true to trigger navigation
                     }, label: {
-                        Text("active")
+                        Text("Active")
                             .frame(width: 100, height: 30, alignment: .center)
                             .padding()
                             .border(Color.black)
@@ -35,7 +35,7 @@ struct LoadingScreen: View {
                         self.selectedEndpoint = Constants.endpointKill
                         self.isNavigating = true  // Set isNavigating to true to trigger navigation
                     }, label: {
-                        Text("Kill switch")
+                        Text("Kill")
                             .frame(width: 100, height: 30, alignment: .center)
                             .padding()
                             .border(Color.black)
