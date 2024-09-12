@@ -1,13 +1,7 @@
-//
-//  ContentView.swift
-//  StarterProjectSwiftUI
-//
-//  Created by Malik Motahar - Sounds Mobile 1 on 05/09/2024.
-//
-
 import SwiftUI
 
-struct ContentViewActive: View {
+struct ContentViewAPI: View {
+    let endpoint: String  // Accept the endpoint dynamically
     @StateObject var networkManager = NetworkManagerActive()
     
     var body: some View {
@@ -37,7 +31,7 @@ struct ContentViewActive: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .padding()
                 .task {
-                    await networkManager.fetchAPIDetails() 
+                    await networkManager.fetchAPIDetails(from: endpoint)  // Pass the endpoint to the fetch method
                 }
             }
         }
@@ -45,5 +39,5 @@ struct ContentViewActive: View {
 }
 
 #Preview {
-    ContentViewActive()
+    ContentViewAPI(endpoint: Constants.endpointActive)  // Provide a sample endpoint for preview
 }

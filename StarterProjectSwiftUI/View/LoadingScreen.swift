@@ -1,62 +1,55 @@
-//
-//  LoadingScreen.swift
-//  StarterProjectSwiftUI
-//
-//  Created by Malik Motahar - Sounds Mobile 1 on 09/09/2024.
-//
-
 import SwiftUI
 
 struct LoadingScreen: View {
-    @State private var didTap = false
-    @State private var isActive = false
-    @State private var isKill = false
+    
+    @State private var isNavigating = false
+    @State private var selectedEndpoint: String = ""
+
     var body: some View {
         NavigationStack {
-            VStack{
+            VStack {
                 AsyncImage(url: URL(string: Constants.bbbcSoundsImage)) { image in
                     image.resizable()
                 } placeholder: {
                     Color.white
                 }
                 .frame(width: 300, height: 300)
-                .clipShape(.rect(cornerRadius: 25))
-                HStack{
-                        Button(action: {
-                            self.didTap = true
-                            self.isActive = true
-                        }, label: {
-                            Text("active")
-                                .frame(width: 100, height: 30, alignment: .center)
-                                .padding()
-                                .border(Color.black)
-                                .bold()
-                                .background(didTap ? Color.green : Color.yellow)
-                        })
+                .clipShape(RoundedRectangle(cornerRadius: 25))
+                
+                HStack {
                     Button(action: {
-                        self.didTap = true
-                        self.isKill = true
+                        
+                        self.selectedEndpoint = Constants.endpointActive
+                        self.isNavigating = true  // Set isNavigating to true to trigger navigation
                     }, label: {
-                         Text("Kill switch")
-                             .frame(width: 100, height: 30, alignment: .center)
-                             .padding()
-                             .border(Color.black)
-                             .bold()
-                             
-                     })
+                        Text("active")
+                            .frame(width: 100, height: 30, alignment: .center)
+                            .padding()
+                            .border(Color.black)
+                            .bold()
+                            
+                    })
+
+                    Button(action: {
+                        
+                        self.selectedEndpoint = Constants.endpointKill
+                        self.isNavigating = true  // Set isNavigating to true to trigger navigation
+                    }, label: {
+                        Text("Kill switch")
+                            .frame(width: 100, height: 30, alignment: .center)
+                            .padding()
+                            .border(Color.black)
+                            .bold()
+                            
+                    })
                 }
             }
-                .navigationTitle("Kill switch page")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationDestination(isPresented: $isActive) {
-                    ContentViewActive()
-                }
-                .navigationDestination(isPresented: $isKill) {
-                    ContentViewKill()
-                }
-            
-                
-
+            .navigationTitle("Kill switch page")
+            .navigationBarTitleDisplayMode(.inline)
+            // Navigate to ContentViewAPI, passing the selectedEndpoint
+            .navigationDestination(isPresented: $isNavigating) {
+                ContentViewAPI(endpoint: selectedEndpoint)  // Pass the selected endpoint here
+            }
         }
     }
 }
