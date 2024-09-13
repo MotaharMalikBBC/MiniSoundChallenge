@@ -17,7 +17,7 @@ struct RMSConfigBoxActive: View {
                 Text("API key:").accessibilityLabel("API key")
                     .bold()
                 Spacer()
-                Text(user?.rmsConfig.apiKey ?? "your api key here!!!").accessibilityLabel(user?.rmsConfig.apiKey ?? "your api key here!!!")
+                Text(user?.rmsConfig.apiKey ?? "").accessibilityLabel(user?.rmsConfig.apiKey ?? "")
             }
             .padding(.vertical, 5)
             
@@ -27,8 +27,8 @@ struct RMSConfigBoxActive: View {
                     .accessibilityLabel("root url")
                     
                 Spacer()
-                Text(user?.rmsConfig.rootURL ?? "your root url here: HOLDER")
-                    .accessibilityLabel(user?.rmsConfig.rootURL ?? "your root url here: HOLDER")
+                Text(user?.rmsConfig.rootURL ?? "")
+                    .accessibilityLabel(user?.rmsConfig.rootURL ?? "")
                     .accessibilityAddTraits(.isLink)
             }
            

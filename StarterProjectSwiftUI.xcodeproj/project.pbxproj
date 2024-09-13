@@ -102,9 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				B746C7902C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift */,
+				B746C7AB2C8F548E001FAC33 /* LoadingScreen.swift */,
 				B746C7922C8A37E5001FAC33 /* ContentView.swift */,
 				B746C7A32C8B1990001FAC33 /* RMSConfigBoxActive.swift */,
-				B746C7AB2C8F548E001FAC33 /* LoadingScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

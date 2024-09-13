@@ -48,7 +48,7 @@ struct LoadingScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             // Navigate to ContentViewAPI, passing the selectedEndpoint
             .navigationDestination(isPresented: $isNavigating) {
-                ContentViewAPI(endpoint: selectedEndpoint)  // Pass the selected endpoint here
+                ContentViewAPI(endpoint: selectedEndpoint)  
             }
         }
     }
