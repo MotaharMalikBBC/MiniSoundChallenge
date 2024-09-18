@@ -5,14 +5,27 @@ struct ContentViewAPI: View {
     @StateObject var networkManager = NetworkManagerActive()
     @State private var user: ApiModel? = nil
     @State private var isUserDataFetched = Bool()
+    @State private var isLoading = true
+    @State private var isTapped = false
     
     var body: some View {
         NavigationStack {
-            if isUserDataFetched {
+            if isLoading {
+                VStack {
+                    ProgressView("Loading..")
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                }
+            }
+            
+            else if isUserDataFetched {
                 ScrollView {
                     VStack(spacing: 40) {
                         Text(user?.status.message ?? "HOLDER")
+                           
+                            
                             .accessibilityLabel(user?.status.message ?? "HOLDER")
+                        
                         Button(action: {
                             if let url = URL(string: user?.status.appStoreURL ?? Constants.url) {
                                 UIApplication.shared.open(url)
@@ -28,14 +41,31 @@ struct ContentViewAPI: View {
                         } label: {
                             Label("RMS Configuration", systemImage: "key.fill")
                         }.accessibilityLabel("RMS configuration")
+                        if endpoint == Constants.endpointActive
+                        {
+                            Button(action: {
+                                self.isTapped = true
+                            },
+                                   label: {
+                                Text("Home page").padding()
+                                    .frame(width: 120.0, height: 50.0)
+                                    .background(.black)
+                                    .cornerRadius(10)
+                                    .tint(.orange)
+                                    
+                                    
+                            })
+                        }
                     }
                     .navigationTitle(user?.status.title ?? "")
                     .accessibilityLabel(user?.status.title ?? "")
                     .navigationBarTitleDisplayMode(.inline)
-                    .padding()
-                   
-                }
-            }
+                    .navigationDestination(isPresented: $isTapped) { MainView()
+                            .padding()
+                           
+                        
+                    }
+                }}
         } .onAppear(perform: {
             Task {
                 await fetchData()
@@ -49,9 +79,10 @@ struct ContentViewAPI: View {
             print("success!")
             user = userModel
             isUserDataFetched = true
+            isLoading = false
         case .failure(let error) :
             print("error!")
-            
+            isLoading = false
         }
         
         
@@ -60,7 +91,7 @@ struct ContentViewAPI: View {
 }
 
 
-//
+
 //#Preview {
 //    ContentViewAPI(endpoint: Constants.endpointActive)  // Provide a sample endpoint for preview
 //}

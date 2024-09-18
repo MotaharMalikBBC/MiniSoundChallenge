@@ -17,6 +17,9 @@
 		B746C7AA2C8B4E3C001FAC33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7A92C8B4E3C001FAC33 /* Constants.swift */; };
 		B746C7AC2C8F548E001FAC33 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7AB2C8F548E001FAC33 /* LoadingScreen.swift */; };
 		B746C7B42C930AC1001FAC33 /* AllStationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B32C930AC1001FAC33 /* AllStationsModel.swift */; };
+		B746C7B62C94BB32001FAC33 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B52C94BB32001FAC33 /* HomePage.swift */; };
+		B746C7B82C96160E001FAC33 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B72C96160E001FAC33 /* MainView.swift */; };
+		B746C7BA2C961943001FAC33 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B92C961943001FAC33 /* ObservableObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		B746C7A92C8B4E3C001FAC33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B746C7AB2C8F548E001FAC33 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		B746C7B32C930AC1001FAC33 /* AllStationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStationsModel.swift; sourceTree = "<group>"; };
+		B746C7B52C94BB32001FAC33 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		B746C7B72C96160E001FAC33 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B746C7B92C961943001FAC33 /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				B746C7A62C8B36D6001FAC33 /* NetworkManagerActive.swift */,
+				B746C7B92C961943001FAC33 /* ObservableObject.swift */,
 			);
 			path = Viewmodel;
 			sourceTree = "<group>";
@@ -105,6 +112,8 @@
 				B746C7AB2C8F548E001FAC33 /* LoadingScreen.swift */,
 				B746C7922C8A37E5001FAC33 /* ContentView.swift */,
 				B746C7A32C8B1990001FAC33 /* RMSConfigBoxActive.swift */,
+				B746C7B52C94BB32001FAC33 /* HomePage.swift */,
+				B746C7B72C96160E001FAC33 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +189,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B746C7B42C930AC1001FAC33 /* AllStationsModel.swift in Sources */,
+				B746C7B62C94BB32001FAC33 /* HomePage.swift in Sources */,
 				B746C7932C8A37E5001FAC33 /* ContentView.swift in Sources */,
+				B746C7B82C96160E001FAC33 /* MainView.swift in Sources */,
+				B746C7BA2C961943001FAC33 /* ObservableObject.swift in Sources */,
 				B746C7AC2C8F548E001FAC33 /* LoadingScreen.swift in Sources */,
 				B746C7912C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift in Sources */,
 				B746C7A72C8B36D6001FAC33 /* NetworkManagerActive.swift in Sources */,

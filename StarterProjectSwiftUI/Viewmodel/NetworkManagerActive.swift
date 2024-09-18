@@ -35,15 +35,19 @@ class NetworkManagerActive: ObservableObject {
 
     private func getAPIDetails(from endpoint: String) async throws -> Data {
         guard let url = URL(string: endpoint) else {
+            print("Invalid URL: \(endpoint)")
             throw APIError.invalidURL
         }
+        print("Fetching from URL: \(url)")
         
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            print("Invalid response status: \(response)")
             throw APIError.invalidResponse
         }
         
-       return data
+        print("Data received, length: \(data.count)")
+        return data
     }
     
     enum APIError: Error {
@@ -52,6 +56,8 @@ class NetworkManagerActive: ObservableObject {
         case invalidData
         case error
     }
+    
+    
 }
 
 

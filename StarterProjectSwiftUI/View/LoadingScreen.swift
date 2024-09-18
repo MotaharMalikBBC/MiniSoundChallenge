@@ -9,8 +9,12 @@ struct LoadingScreen: View {
         NavigationStack {
             VStack {
                 AsyncImage(url: URL(string: Constants.bbbcSoundsImage)) { image in
-                    image.resizable()
-                } placeholder: {
+                    image
+                        .resizable()
+                        .accessibilityLabel("BBC Sounds")
+                        .accessibilityAddTraits(.isImage )
+                }
+            placeholder: {
                     Color.white
                 }
                 .frame(width: 300, height: 300)
@@ -25,10 +29,14 @@ struct LoadingScreen: View {
                         Text("Active")
                             .frame(width: 100, height: 30, alignment: .center)
                             .padding()
-                            .border(Color.black)
                             .bold()
+                            .tint(.green)
+                            .background(.black)
+                            .cornerRadius(10)
                             
                     })
+                    .accessibilityLabel("Active Switch")
+                        .accessibilityAddTraits(.isButton )
 
                     Button(action: {
                         
@@ -38,10 +46,15 @@ struct LoadingScreen: View {
                         Text("Kill")
                             .frame(width: 100, height: 30, alignment: .center)
                             .padding()
-                            .border(Color.black)
                             .bold()
+                            .tint(.red)
+                            .background(.black)
+                            .cornerRadius(10)
+                        
                             
                     })
+                    .accessibilityLabel("Kill Switch")
+                        .accessibilityAddTraits(.isButton )
                 }
             }
             .navigationTitle("Kill switch page")
