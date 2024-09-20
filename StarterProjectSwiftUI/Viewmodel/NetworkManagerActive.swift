@@ -12,7 +12,7 @@ class NetworkManagerActive: ObservableObject {
         do {
             let data = try await getAPIDetails(from: endpoint)
             let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
+//            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData =  try decoder.decode(T.self, from: data)
             return .success(decodedData)
             

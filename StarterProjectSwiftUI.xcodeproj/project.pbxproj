@@ -20,6 +20,10 @@
 		B746C7B62C94BB32001FAC33 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B52C94BB32001FAC33 /* HomePage.swift */; };
 		B746C7B82C96160E001FAC33 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B72C96160E001FAC33 /* MainView.swift */; };
 		B746C7BA2C961943001FAC33 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B746C7B92C961943001FAC33 /* ObservableObject.swift */; };
+		B78A9FA02C9C241A00A6F209 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A9F9F2C9C241A00A6F209 /* HomePageViewModel.swift */; };
+		B78A9FA22C9C248D00A6F209 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A9FA12C9C248D00A6F209 /* NetworkService.swift */; };
+		B7EE66A22C9DC3A900ECE111 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EE66A12C9DC3A900ECE111 /* AudioPlayer.swift */; };
+		B7EE66A42C9DC3DE00ECE111 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EE66A32C9DC3DE00ECE111 /* MusicPlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		B746C7B52C94BB32001FAC33 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		B746C7B72C96160E001FAC33 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		B746C7B92C961943001FAC33 /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
+		B78A9F9F2C9C241A00A6F209 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		B78A9FA12C9C248D00A6F209 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		B7EE66A12C9DC3A900ECE111 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		B7EE66A32C9DC3DE00ECE111 /* MusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,9 @@
 			children = (
 				B746C7A62C8B36D6001FAC33 /* NetworkManagerActive.swift */,
 				B746C7B92C961943001FAC33 /* ObservableObject.swift */,
+				B78A9F9F2C9C241A00A6F209 /* HomePageViewModel.swift */,
+				B78A9FA12C9C248D00A6F209 /* NetworkService.swift */,
+				B7EE66A12C9DC3A900ECE111 /* AudioPlayer.swift */,
 			);
 			path = Viewmodel;
 			sourceTree = "<group>";
@@ -114,6 +125,7 @@
 				B746C7A32C8B1990001FAC33 /* RMSConfigBoxActive.swift */,
 				B746C7B52C94BB32001FAC33 /* HomePage.swift */,
 				B746C7B72C96160E001FAC33 /* MainView.swift */,
+				B7EE66A32C9DC3DE00ECE111 /* MusicPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7EE66A42C9DC3DE00ECE111 /* MusicPlayerView.swift in Sources */,
 				B746C7B42C930AC1001FAC33 /* AllStationsModel.swift in Sources */,
 				B746C7B62C94BB32001FAC33 /* HomePage.swift in Sources */,
 				B746C7932C8A37E5001FAC33 /* ContentView.swift in Sources */,
@@ -196,9 +209,12 @@
 				B746C7AC2C8F548E001FAC33 /* LoadingScreen.swift in Sources */,
 				B746C7912C8A37E5001FAC33 /* StarterProjectSwiftUIApp.swift in Sources */,
 				B746C7A72C8B36D6001FAC33 /* NetworkManagerActive.swift in Sources */,
+				B78A9FA02C9C241A00A6F209 /* HomePageViewModel.swift in Sources */,
 				B746C7A42C8B1990001FAC33 /* RMSConfigBoxActive.swift in Sources */,
 				B746C7A02C8B0A94001FAC33 /* UserDataModel.swift in Sources */,
+				B78A9FA22C9C248D00A6F209 /* NetworkService.swift in Sources */,
 				B746C7AA2C8B4E3C001FAC33 /* Constants.swift in Sources */,
+				B7EE66A22C9DC3A900ECE111 /* AudioPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
