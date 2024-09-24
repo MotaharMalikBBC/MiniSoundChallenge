@@ -3,7 +3,7 @@
 //  StarterProjectSwiftUI
 //
 //  Created by Malik Motahar - Sounds Mobile 1 on 20/09/2024.
-//
+
 
 import Foundation
 import SwiftUI
@@ -49,3 +49,8 @@ struct MusicPlayerView: View {
         }
     }
 }
+
+//#Preview {
+//    MainView()
+//        .environmentObject(Order())
+//}

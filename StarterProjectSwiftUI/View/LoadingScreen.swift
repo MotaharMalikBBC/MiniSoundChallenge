@@ -4,6 +4,7 @@ struct LoadingScreen: View {
     
     @State private var isNavigating = false
     @State private var selectedEndpoint: String = ""
+    
 
     var body: some View {
         NavigationStack {
@@ -61,7 +62,7 @@ struct LoadingScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             // Navigate to ContentViewAPI, passing the selectedEndpoint
             .navigationDestination(isPresented: $isNavigating) {
-                ContentViewAPI(endpoint: selectedEndpoint)  
+                ContentViewAPI(endpoint: selectedEndpoint, station: nil)
             }
         }
     }

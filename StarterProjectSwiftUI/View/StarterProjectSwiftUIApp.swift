@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct StarterProjectSwiftUIApp: App {
+    
+
     var body: some Scene {
         WindowGroup {
             LoadingScreen()

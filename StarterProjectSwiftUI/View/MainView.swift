@@ -10,14 +10,15 @@ import SwiftUI
 struct MainView: View {
     
     var body: some View {
-        
+       
         TabView {
-            HomePage()
+            HomePage(station: nil)
+            
                 .tabItem {
                     Label("Home", systemImage: "house")
                        
-                }
-            ContentViewAPI(endpoint: Constants.endpointActive)
+                }.background(Color.gray)
+            ContentViewAPI(endpoint: Constants.endpointActive, station: nil)
                 .tabItem {
                     Label("Music", systemImage: "play.circle")
                 }
@@ -35,10 +36,15 @@ struct MainView: View {
                 }
 
         }.tint(.red)
+        
     }
+
+
 }
 
-#Preview {
-    MainView()
-        .environmentObject(Order())
-}
+
+//
+//#Preview {
+//    MainView()
+//        .environmentObject(Order())
+//}

@@ -1,7 +1,16 @@
 import SwiftUI
+import SMP
+
 struct HomePage: View {
-  @StateObject private var viewModel = HomePageViewModel()
-  var body: some View {
+    
+  @ObservedObject private var viewModel = HomePageViewModel()
+    let station : PlayableItem?
+    @State var smpVideoView: UIView?
+    @State var isPlaying = false
+    @State private var jwtToken: String?
+    let rmsAuthenticator = RMSAuthenticator()
+    
+    var body: some View {
       
       NavigationStack {
           
@@ -16,6 +25,7 @@ struct HomePage: View {
                   } else if !viewModel.user.isEmpty {
                       ForEach(viewModel.user.flatMap {$0.data }, id: \.id) { item in
                           VStack {
+                              Color.gray.ignoresSafeArea()
                               Text(item.titles.primary)
                                   .font(.headline)
                                   .padding(.top, 10)
@@ -45,16 +55,38 @@ struct HomePage: View {
                                       }
                                       
                                       .frame(width: 300, height: 300)
+//                                      Button(isPlaying) {
+//                                          if isPlaying {
+//                                              stopPlayback()
+//                                          } else {
+//                                              fetchJWTAndPlay(for: station!)
+//                                          }
+//                                      }
+//                                      
+                                      
+                                      
                                       Button(action: {
+                                          isPlaying ? "Stop" : "Contiinue Playing"
+                                          if isPlaying {
+                                              stopPlayback()
+                                          } else {
+                                              fetchJWTAndPlay(for: station!)
+                                          }
+                                      
                                           // Handle play button action here
                                           print("Play button tapped for \(item.titles.primary)")
-                                      }) {
+                                          
+                                        }) {
                                           Image(systemName: "play.circle.fill")
                                               .resizable()
                                               .frame(width: 50, height: 50)
                                               .foregroundColor(.white)
                                               .shadow(radius: 10)
                                       }
+                                      SMPView(smpVideoView: smpVideoView)
+                                              .frame(height: 150)
+
+                                      
                                   }
                               } else {
                                   Image(systemName: "photo")
@@ -72,57 +104,64 @@ struct HomePage: View {
                           .foregroundColor(.gray)
                           
                   }
-              }
+          }
           .background(Color.gray)
+          
               .onAppear {
                   viewModel.fetchData()
               }
-    }
+      }
   }
-}
-#Preview {
-  HomePage()
-}
-struct MusicPlayerView: View {
-    @StateObject private var audioPlayer = AudioPlayer()
-
-    let remoteURL = "https://www.example.com/audio.mp3"  // Replace with your remote audio URL
-
-    var body: some View {
-        VStack {
-            Text("Music Player")
-                .font(.largeTitle)
-                .padding()
-
-            if audioPlayer.isPlaying {
-                Button(action: {
-                    audioPlayer.pause()
-                }) {
-                    Image(systemName: "pause.circle.fill")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .padding()
+    
+    
+    private func playStation(with station: PlayableItem) {
+        guard let jwtToken = jwtToken else {return }
+        
+        var builder = BBCSMPPlayerBuilder()
+        builder = builder.withInterruptionEndedBehaviour(.autoresume)
+        let smp = builder.build()
+        
+        let authProvider = MediaSelectorAuthenticationProvider(jwtToken: jwtToken)
+        
+        let playerItemProvider = MediaSelectorItemProviderBuilder(VPID: station.id, mediaSet: "mobile-phone-main", AVType: .audio, streamType: .simulcast, avStatisticsConsumer: MyAvStatisticsConsumer())
+            .withAuthenticationProvider(authProvider)
+            .buildItemProvider()
+        
+        smp.playerItemProvider = playerItemProvider
+        smp.play()
+        isPlaying = true
+        
+        smpVideoView = smp.buildUserInterface().buildView()
+        
+    }
+    
+    
+    private func stopPlayback() {
+        smpVideoView = nil
+        isPlaying = false
+    }
+    
+    private func fetchJWTAndPlay(for station: PlayableItem) {
+        
+        let serviceId = station.id
+        
+        rmsAuthenticator.fetchJWTToken(for: serviceId ) { token in
+            if let jwt = token {
+                DispatchQueue.main.async {
+                    self.jwtToken = jwt
+                    self.playStation(with: station)
                 }
             } else {
-                Button(action: {
-                    audioPlayer.play(url: remoteURL)
-                }) {
-                    Image(systemName: "play.circle.fill")
-                        .resizable()
-                        .frame(width: 60, height: 60)
-                        .padding()
-                }
-            }
-
-            Button(action: {
-                audioPlayer.stop()
-            }) {
-                Text("Stop")
-                    .foregroundColor(.red)
-                    .padding()
+                print("Failed to fetch JWT")
             }
         }
     }
+    
 }
+//
+//#Preview {
+//  HomePage()
+//}
+
 
 

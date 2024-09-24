@@ -7,6 +7,8 @@ struct ContentViewAPI: View {
     @State private var isUserDataFetched = Bool()
     @State private var isLoading = true
     @State private var isTapped = false
+    let station: PlayableItem?
+
     
     var body: some View {
         NavigationStack {

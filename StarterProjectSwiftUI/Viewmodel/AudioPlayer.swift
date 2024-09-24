@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
+import AVFoundation
+
+
 class AudioPlayer: ObservableObject {
     var player: AVPlayer?
     @Published var isPlaying = false
