@@ -11,12 +11,8 @@ struct HomePage: View {
     let rmsAuthenticator = RMSAuthenticator()
     
     var body: some View {
-      
       NavigationStack {
-          
           ScrollView {
-              
-              
                   if viewModel.isLoading {
                       ProgressView("Fetching data...")
                   } else if let errorMessage = viewModel.errorMessage {
@@ -53,29 +49,12 @@ struct HomePage: View {
                                                   .clipShape(RoundedRectangle(cornerRadius: 25))
                                           }
                                       }
-                                      
                                       .frame(width: 300, height: 300)
-//                                      Button(isPlaying) {
-//                                          if isPlaying {
-//                                              stopPlayback()
-//                                          } else {
-//                                              fetchJWTAndPlay(for: station!)
-//                                          }
-//                                      }
-//                                      
-                                      
                                       
                                       Button(action: {
-                                          isPlaying ? "Stop" : "Contiinue Playing"
-                                          if isPlaying {
-                                              stopPlayback()
-                                          } else {
-                                              fetchJWTAndPlay(for: station!)
-                                          }
-                                      
-                                          // Handle play button action here
-                                          print("Play button tapped for \(item.titles.primary)")
                                           
+                                          fetchJWTAndPlay(for: item)
+                                          print("============> Play Button clicked!")
                                         }) {
                                           Image(systemName: "play.circle.fill")
                                               .resizable()
@@ -83,10 +62,8 @@ struct HomePage: View {
                                               .foregroundColor(.white)
                                               .shadow(radius: 10)
                                       }
-                                      SMPView(smpVideoView: smpVideoView)
-                                              .frame(height: 150)
-
                                       
+                                    
                                   }
                               } else {
                                   Image(systemName: "photo")
@@ -135,12 +112,6 @@ struct HomePage: View {
         
     }
     
-    
-    private func stopPlayback() {
-        smpVideoView = nil
-        isPlaying = false
-    }
-    
     private func fetchJWTAndPlay(for station: PlayableItem) {
         
         let serviceId = station.id
@@ -164,4 +135,7 @@ struct HomePage: View {
 //}
 
 
+//"{\"token\":\"eyJhYWYiOnRydWUsImtpZCI6IjYiLCJpc3MiOiJ1ay5jby5iYmNfc291bmRzIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJiYmNyYWRpbyIsInN1YiI6InVrLmNvLmJiY19zb3VuZHMiLCJ2ZXIiOjEsImlzcyI6InVrLmNvLmJiY19zb3VuZHMiLCJleHAiOjE3MjczMDI5NDIsImlhdCI6MTcyNzIxNjU0MiwiY3ZpZHMiOlsidXJuOmJiYzpwaXBzOnBpZDpiYmNfcmFkaW9fb25lIl19.-NF3YGQzt9akR0Naqc4bBzitH1t6_v_80hDzT-6FG8twu_wq0eLhotc5j4v3orKCh1NFShgJiV8lRmoNoeRwuA\"}"
 
+
+//"eyJhYWYiOnRydWUsImtpZCI6IjYiLCJpc3MiOiJ1ay5jby5iYmNfc291bmRzIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJhdWQiOiJiYmNyYWRpbyIsInN1YiI6InVrLmNvLmJiY19zb3VuZHMiLCJ2ZXIiOjEsImlzcyI6InVrLmNvLmJiY19zb3VuZHMiLCJleHAiOjE3MjczMDI5NDIsImlhdCI6MTcyNzIxNjU0MiwiY3ZpZHMiOlsidXJuOmJiYzpwaXBzOnBpZDpiYmNfcmFkaW9fb25lIl19.-NF3YGQzt9akR0Naqc4bBzitH1t6_v_80hDzT-6FG8twu_wq0eLhotc5j4v3orKCh1NFShgJiV8lRmoNoeRwuA"

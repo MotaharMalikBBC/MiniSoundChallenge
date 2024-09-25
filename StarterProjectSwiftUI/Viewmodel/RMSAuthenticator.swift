@@ -15,8 +15,18 @@ class RMSAuthenticator {
         completion(nil)
         return
       }
-      let jwt = String(data: data, encoding: .utf8)
-      completion(jwt)
+//      let jwt = String(data: data, encoding: .utf8)
+//      completion(jwt)
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let token = jsonObject["token"] as? String {
+                completion(token)
+            } else {
+                completion(nil)
+            }
+        } catch {
+            completion(nil)
+        }
     }.resume()
   }
 }
