@@ -1,0 +1,30 @@
+PODS:
+  - config-service (2.1.0)
+  - httpclient-ios (11.0.2)
+  - mediaselector-client-ios (9.1.1):
+    - httpclient-ios (>= 10.0.0)
+  - smp-ios (45.0.0):
+    - config-service (>= 2.1.0)
+    - httpclient-ios (~> 11.0.0)
+    - mediaselector-client-ios (~> 9.1.1)
+    - smp-ios/AVDecoder (= 45.0.0)
+
+DEPENDENCIES:
+  - smp-ios
+
+SPEC REPOS:
+  "git@github.com:bbc/map-ios-podspecs.git":
+    - config-service
+    - httpclient-ios
+    - mediaselector-client-ios
+    - smp-ios
+
+SPEC CHECKSUMS:
+  config-service: eb5416fa70aa89e6cda1e68c1dcd850cad7a6175
+  httpclient-ios: dbdbd270e310f0a905ab37a0db9406ea2917afcb
+  mediaselector-client-ios: 49eb616f56d4914c1bee4e13baa29e15f3ac6185
+  smp-ios: 5baad56f00c7006d0a69cb2f70aa7ce0d03820be
+
+PODFILE CHECKSUM: f2343cdc8312dec44fbb2aa1c360401551c99301
+
+COCOAPODS: 1.15.2
